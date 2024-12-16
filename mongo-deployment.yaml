@@ -9,7 +9,7 @@ metadata:
   name: mongo
   namespace: mongo-namespace
 spec:
-  replicas: 1
+  replicas: 1 
   selector:
     matchLabels:
       app: mongo
@@ -19,24 +19,32 @@ spec:
         app: mongo
     spec:
       containers:
-        - name: mongo
+        - name: mongo 
           image: mongo:latest
           ports:
             - containerPort: 27017
           volumeMounts:
             - name: mongo-data
               mountPath: /data/db
+      volumes:
+        - name: mongo-data
+          persistentVolumeClaim:
+            claimName: mongo-pvc
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: mongo
-  namespace: mongo-namespace  
+  name: mongo 
+  namespace: mongo-namespace
 spec:
-  ports:
-    - port: 27017
   selector:
     app: mongo
+  ports:
+    - protocol: TCP 
+      port: 27017
+      targetPort: 27017
+  type: LoadBalancer
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -46,7 +54,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: nfs-client
   resources:
     requests:
       storage: 1Gi
-
