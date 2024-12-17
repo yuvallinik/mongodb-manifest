@@ -1,4 +1,3 @@
-+++markdown
 # MongoDB Deployment on Kubernetes with ArgoCD
 
 This repository contains YAML manifests to deploy a MongoDB instance on a Kubernetes cluster. The deployment process is automated using **ArgoCD**, which monitors the Git repository and applies the configuration to the cluster.
