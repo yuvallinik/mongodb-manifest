@@ -19,7 +19,7 @@ The repository includes the following Kubernetes manifests:
 
 ### Overview
 
-1. **Push Manifests to Git**: All Kubernetes manifests are stored in this Git repository.
+1. **Push Manifests to your GitHub repo**: All Kubernetes manifests are stored in this Git repository.
 2. **ArgoCD Sync**: ArgoCD continuously monitors the repository for changes.
 3. **Automated Deployment**: When changes are detected, ArgoCD automatically deploys or updates the MongoDB resources on the Kubernetes cluster.
 
